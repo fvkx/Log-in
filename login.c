@@ -2,20 +2,24 @@
 #include <string.h>
 #include <stdbool.h>
 
-int main () {
-	char enter_Password[50];
-	const char * password = "kauhgdiuaw";
-while (true){ 	
-	scanf(":%s\n",enter_Password);
+int main() {
+    char enter_Password[50];
+    const char *password = "kauhgdiuaw";
 
+    while (true) {
+        printf("Enter password: ");
 
-	if (strcmp (enter_Password, password ) == 0 ){
-		printf("correct_password");
-	}
-	else 
-	{
-		printf("incorrect_password");
-	}
+        // limit input to avoid buffer overflow
+        scanf("%49s", enter_Password);
+
+        if (strcmp(enter_Password, password) == 0) {
+            printf("Correct password\n");
+            break; // exit loop when correct
+        } else {
+            printf("Incorrect password\n");
+        }
+    }
+
+    return 0;
 }
-return 0;
-}
+
